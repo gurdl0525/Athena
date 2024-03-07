@@ -1,0 +1,19 @@
+spring:
+  config:
+    activate:
+      on-profile: datasource
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://localhost:3306/Athena}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD}

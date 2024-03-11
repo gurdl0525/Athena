@@ -1,0 +1,14 @@
+
+
+${AnsiColor.CYAN} █████      ████████ ██   ██ ███████${AnsiColor.BRIGHT_WHITE} ███████ ██ ███████     ██    ██  ██████  ████████ ██ ${AnsiColor.CYAN}███    ██${AnsiColor.BRIGHT_WHITE}  ██████
+${AnsiColor.CYAN}██   ██        ██    ██   ██ ██     ${AnsiColor.BRIGHT_WHITE} ██      ██ ██          ██    ██ ██    ██    ██    ██ ${AnsiColor.CYAN}████   ██${AnsiColor.BRIGHT_WHITE} ██       
+${AnsiColor.CYAN}███████        ██    ███████ █████  ${AnsiColor.BRIGHT_WHITE} ███████ ██ ███████     ██    ██ ██    ██    ██    ██ ${AnsiColor.CYAN}██ ██  ██${AnsiColor.BRIGHT_WHITE} ██   ███ 
+${AnsiColor.CYAN}██   ██        ██    ██   ██ ██     ${AnsiColor.BRIGHT_WHITE}      ██ ██      ██      ██  ██  ██    ██    ██    ██ ${AnsiColor.CYAN}██  ██ ██${AnsiColor.BRIGHT_WHITE} ██    ██ 
+${AnsiColor.CYAN}██   ██        ██    ██   ██ ███████${AnsiColor.BRIGHT_WHITE} ███████ ██ ███████       ████    ██████     ██    ██ ${AnsiColor.CYAN}██   ████${AnsiColor.BRIGHT_WHITE}  ██████ 
+██████  ██       ██████   ██████      ${AnsiColor.CYAN} █████ ${AnsiColor.BRIGHT_WHITE} ██████  ██████  ██      ██  ██████  █████  ████████ ██  ██████  ███    ██
+██   ██ ██      ██    ██ ██           ${AnsiColor.CYAN}██   ██${AnsiColor.BRIGHT_WHITE} ██   ██ ██   ██ ██      ██ ██      ██   ██    ██    ██ ██    ██ ████   ██
+██████  ██      ██    ██ ██   ███     ${AnsiColor.CYAN}███████${AnsiColor.BRIGHT_WHITE} ██████  ██████  ██      ██ ██      ███████    ██    ██ ██    ██ ██ ██  ██
+██   ██ ██      ██    ██ ██    ██     ${AnsiColor.CYAN}██   ██${AnsiColor.BRIGHT_WHITE} ██      ██      ██      ██ ██      ██   ██    ██    ██ ██    ██ ██  ██ ██
+██████  ███████  ██████   ██████      ${AnsiColor.CYAN}██   ██${AnsiColor.BRIGHT_WHITE} ██      ██      ███████ ██  ██████ ██   ██    ██    ██  ██████  ██   ████
+
+::: ${AnsiColor.BRIGHT_GREEN}Spring Boot${AnsiColor.BRIGHT_WHITE} :::${spring-boot.formatted-version}

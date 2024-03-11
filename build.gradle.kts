@@ -8,7 +8,7 @@ plugins {
     kotlin("plugin.jpa") version Versions.JVM_VERSION
 }
 
-group = "org.example"
+group = "athena.kanghyuk.com"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -53,6 +53,13 @@ dependencies {
 
     // logger
     implementation(Dependencies.LOGGER)
+
+    // feign
+    implementation(Dependencies.OPEN_FEIGN)
+    implementation(Dependencies.FEIGN_HTTP)
+
+    // cloud
+    implementation(Dependencies.SPRING_CLOUD)
 
     // test
     testImplementation(Dependencies.SPRING_BOOT_TEST)

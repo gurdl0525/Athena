@@ -14,6 +14,15 @@ object Dependencies {
     const val REDIS = "$SPRING_BOOT_STARTER-data-redis"
     const val MYSQL = "com.mysql:mysql-connector-j"
 
+    // cloud
+    const val SPRING_CLOUD = "org.springframework.cloud:spring-cloud-dependencies:${Versions.SPRING_CLOUD_VERSION}"
+
+    // feign
+    const val OPEN_FEIGN = "org.springframework.cloud:spring-cloud-starter-openfeign:${Versions.OPEN_FEIGN}"
+    const val FEIGN_HTTP = "io.github.openfeign:feign-httpclient:${Versions.FEIGN_HTTP_VERSION}"
+
+
+
     // security
     const val SPRING_SECURITY = "$SPRING_BOOT_STARTER-security"
 

@@ -6,10 +6,10 @@ import org.springframework.data.redis.core.RedisHash
 import org.springframework.data.redis.core.TimeToLive
 import org.springframework.data.redis.core.index.Indexed
 
-@RedisHash(value = TableNames.REFRESH_TOKEN_TABLE)
-class RefreshTokenRedisEntity(
+@RedisHash(value = TableNames.ACCESS_TOKEN_TABLE)
+class AccessToken(
     subject: String,
-    rfToken: String,
+    accessToken: String,
     ttl: Long
 ) {
     @Id
@@ -17,7 +17,7 @@ class RefreshTokenRedisEntity(
         protected set
 
     @Indexed
-    var rfToken: String = rfToken
+    var accessToken: String = accessToken
         protected set
 
     @TimeToLive

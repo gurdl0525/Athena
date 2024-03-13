@@ -22,7 +22,7 @@ class AthenaExceptionHandler {
 
     @ExceptionHandler(AthenaException::class)
     protected fun customExceptionHandle(e: AthenaException): ResponseEntity<ErrorResponse> =
-        ResponseEntity(ErrorResponse.of(e.errorCode), e.errorCode.status)
+        ResponseEntity(ErrorResponse.of(e.status, e.message), e.status)
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException::class)

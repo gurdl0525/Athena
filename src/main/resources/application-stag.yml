@@ -1,15 +1,15 @@
 spring:
   config:
     activate:
-      on-profile: local
+      on-profile: stag
 
 management:
   endpoint:
     health:
-      show-details: always
+      show-details: when_authorized
       enabled: true
     heapdump:
-      enabled: true
+      enabled: false
     shutdown:
       enabled: false
 
@@ -17,13 +17,13 @@ management:
     enabled-by-default: false
     web:
       exposure:
-        include: health, heapdump
+        include: health
 
 logging:
   level:
     sql: info
-    root: info
-    web: info
+    root: warn
+    web: warn
 
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT}

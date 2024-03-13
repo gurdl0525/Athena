@@ -21,7 +21,8 @@ object Dependencies {
     const val OPEN_FEIGN = "org.springframework.cloud:spring-cloud-starter-openfeign:${Versions.OPEN_FEIGN}"
     const val FEIGN_HTTP = "io.github.openfeign:feign-httpclient:${Versions.FEIGN_HTTP_VERSION}"
 
-
+    // actuator
+    const val ACTUATOR = "$SPRING_BOOT_STARTER-actuator"
 
     // security
     const val SPRING_SECURITY = "$SPRING_BOOT_STARTER-security"

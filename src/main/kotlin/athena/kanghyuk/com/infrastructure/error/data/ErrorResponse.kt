@@ -10,9 +10,9 @@ data class ErrorResponse(
 ) {
     companion object {
 
-        fun of(errorCode: ErrorCode) = ErrorResponse(
-            errorCode.status,
-            errorCode.message
+        fun of(status: HttpStatus, message: String) = ErrorResponse(
+            status = status,
+            message = message
         )
 
         fun of(e: BindException): BindErrorResponse {

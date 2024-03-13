@@ -1,16 +1,16 @@
 package athena.kanghyuk.com.application.auth.repository
 
-import athena.kanghyuk.com.application.auth.entity.AccessTokenRedisEntity
+import athena.kanghyuk.com.application.auth.entity.AccessToken
 import org.springframework.data.repository.Repository
 
 @org.springframework.stereotype.Repository
-interface AccessTokenRepository : Repository<AccessTokenRedisEntity, String> {
+interface AccessTokenRepository : Repository<AccessToken, String> {
 
-    fun findById(id: String): AccessTokenRedisEntity?
+    fun findById(id: String): AccessToken?
 
     fun deleteById(id: String)
 
-    fun save(entity: AccessTokenRedisEntity): AccessTokenRedisEntity
+    fun save(entity: AccessToken): AccessToken
 
-    fun findByAccessToken(accessToken: String): AccessTokenRedisEntity?
+    fun findByAccessToken(accessToken: String): AccessToken?
 }

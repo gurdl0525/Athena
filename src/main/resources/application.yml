@@ -2,13 +2,12 @@ spring:
   profiles:
     group:
       "local": "local, datasource, jwt, redis"
-      "stag": "datasource, jwt, redis, log"
+      "stag": "stag, datasource, jwt, redis"
 
   jackson:
     property-naming-strategy: SNAKE_CASE
 
 server:
-  port: ${SERVER_PORT:8080}
   tomcat:
     threads:
       max: 200

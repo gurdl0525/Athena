@@ -1,6 +1,5 @@
 package athena.kanghyuk.com.infrastructure.filter
 
-import athena.kanghyuk.com.infrastructure.error.data.ErrorCode
 import athena.kanghyuk.com.infrastructure.error.exception.AthenaException
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.http.MediaType
@@ -16,19 +15,20 @@ class ExceptionHandlerFilter(
 ): OncePerRequestFilter(){
 
     private fun sendErrorResponse(
-        errorCode: ErrorCode,
+        status: Int,
+        message: String,
         response: HttpServletResponse
     ){
 
         response.let {
-            it.status = errorCode.status.value()
+            it.status = status
             it.contentType = MediaType.APPLICATION_JSON_VALUE
             it.characterEncoding = "UTF-8"
         }
 
         objectMapper.writeValue(
             response.writer,
-            errorCode.message
+            message
         )
     }
 
@@ -40,10 +40,10 @@ class ExceptionHandlerFilter(
         try {
             filterChain.doFilter(request, response)
         }catch (e: AthenaException) {
-            sendErrorResponse(e.errorCode, response)
+            sendErrorResponse(e.status.value(), e.message, response)
         }catch (e: Exception){
             e.printStackTrace()
-            sendErrorResponse(ErrorCode.INTERNAL_SERVER_ERROR, response)
+            sendErrorResponse(500, "Something went wrong.", response)
         }
     }
 }

@@ -1,5 +1,8 @@
 package athena.kanghyuk.com.infrastructure.error.exception
 
-import athena.kanghyuk.com.infrastructure.error.data.ErrorCode
+import org.springframework.http.HttpStatus
 
-open class AthenaException(val errorCode: ErrorCode) : RuntimeException(errorCode.message)
+open class AthenaException(
+    val status: HttpStatus,
+    override val message: String
+) : RuntimeException(message)

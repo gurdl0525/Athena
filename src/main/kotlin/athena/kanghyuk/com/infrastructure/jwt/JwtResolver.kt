@@ -1,26 +1,23 @@
 package athena.kanghyuk.com.infrastructure.jwt
 
-import athena.kanghyuk.com.application.auth.repository.AccessTokenRepository
+import athena.kanghyuk.com.core.auth.port.out.ReadTokenPort
 import athena.kanghyuk.com.infrastructure.env.jwt.JwtProperties
+import athena.kanghyuk.com.infrastructure.error.exception.AthenaException
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 import javax.servlet.http.HttpServletRequest
 
 @Component
 class JwtResolver(
     private val jwtProperties: JwtProperties,
-    private val accessTokenRepository: AccessTokenRepository
+    private val readTokenPort: ReadTokenPort
 ) {
     fun resolveToken(request: HttpServletRequest): String? =
         request.getHeader(jwtProperties.header)?.let {
 
-            if (it.startsWith(jwtProperties.prefix)) {
+            if (!it.startsWith(jwtProperties.prefix)) throw AthenaException(HttpStatus.UNAUTHORIZED, "Wrong token prefix.")
 
-                val token = it.substring(jwtProperties.prefix.length).trimStart()
-
-                accessTokenRepository.findByAccessToken(token)?.subject
-                    ?: throw TODO()
-            } else {
-                throw TODO() // 정해진 prefix로 시작하지 않을 경우 Error반환
-            }
+            readTokenPort.readByAccessToken(it.substring(jwtProperties.prefix.length))?.subject
+                ?: throw AthenaException(HttpStatus.UNAUTHORIZED, "Wrong token because not exists token.")
         }
 }

@@ -23,6 +23,9 @@ repositories {
 
 dependencies {
 
+    // actuator
+    implementation(Dependencies.ACTUATOR)
+
     //jwr
     implementation(Dependencies.JWT)
 

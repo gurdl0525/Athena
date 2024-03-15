@@ -1,6 +1,6 @@
 package athena.kanghyuk.com.infrastructure.filter
 
-import athena.kanghyuk.com.infrastructure.jwt.JwtAdapter
+import athena.kanghyuk.com.infrastructure.adapter.jwt.JwtAdapter
 import athena.kanghyuk.com.infrastructure.jwt.JwtResolver
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.filter.OncePerRequestFilter

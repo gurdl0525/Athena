@@ -1,8 +1,9 @@
-package athena.kanghyuk.com.infrastructure.jwt
+package athena.kanghyuk.com.infrastructure.adapter.jwt
 
 import athena.kanghyuk.com.application.auth.entity.AccessToken
 import athena.kanghyuk.com.application.auth.entity.RefreshToken
 import athena.kanghyuk.com.core.auth.port.out.DeleteTokenPort
+import athena.kanghyuk.com.core.auth.port.out.GenerateTokenPort
 import athena.kanghyuk.com.core.auth.port.out.ReadTokenPort
 import athena.kanghyuk.com.core.auth.port.out.SaveTokenPort
 import athena.kanghyuk.com.infrastructure.env.jwt.JwtProperties
@@ -23,11 +24,10 @@ class JwtAdapter(
     private val saveTokenPort: SaveTokenPort,
     private val readTokenPort: ReadTokenPort,
     private val deleteTokenPort: DeleteTokenPort
-) {
+): GenerateTokenPort {
 
-    fun generateTokens(subject: String): Pair<String, String> {
+    override fun generateTokens(subject: String): Pair<String, String> {
         val access = generateAccessToken()
-
         val refresh = generateRefreshToken()
 
         saveTokenPort.saveAccessToken(

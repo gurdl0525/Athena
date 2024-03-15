@@ -3,6 +3,8 @@ package athena.kanghyuk.com.infrastructure.error.data
 import org.springframework.http.HttpStatus
 import org.springframework.validation.BindException
 import org.springframework.validation.FieldError
+import javax.validation.ConstraintViolation
+import javax.validation.ConstraintViolationException
 
 data class ErrorResponse(
     val status: HttpStatus,
@@ -15,7 +17,7 @@ data class ErrorResponse(
             message = message
         )
 
-        fun of(e: BindException): BindErrorResponse {
+        fun of(e: BindException): ValidationErrorResponse {
 
             val errorMap = HashMap<String, String?>()
 
@@ -23,7 +25,18 @@ data class ErrorResponse(
                 errorMap[error.field] = error.defaultMessage
             }
 
-            return BindErrorResponse(HttpStatus.BAD_REQUEST, listOf(errorMap))
+            return ValidationErrorResponse(HttpStatus.BAD_REQUEST, listOf(errorMap))
+        }
+
+        fun of(e: ConstraintViolationException): ValidationErrorResponse {
+
+            val errorMap = HashMap<String, String?>()
+
+            for (error: ConstraintViolation<*> in e.constraintViolations) {
+                errorMap[error.propertyPath.toString().split('.').last()] = error.message
+            }
+
+            return ValidationErrorResponse(HttpStatus.BAD_REQUEST, listOf(errorMap))
         }
     }
 }

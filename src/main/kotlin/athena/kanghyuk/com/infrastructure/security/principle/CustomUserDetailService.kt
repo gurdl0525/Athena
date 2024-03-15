@@ -12,6 +12,6 @@ class CustomUserDetailService(
 ) : UserDetailsService {
 
     override fun loadUserByUsername(username: String?): CustomUserDetails =
-        readUserPort.readByAccountId(username!!)?.run { CustomUserDetails(this) }
+        readUserPort.readByOAuthCode(username!!)?.run { CustomUserDetails(this) }
             ?: throw AthenaException(HttpStatus.UNAUTHORIZED, "Wrong token because not exists token.")
 }

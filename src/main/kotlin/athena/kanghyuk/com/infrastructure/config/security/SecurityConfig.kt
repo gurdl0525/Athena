@@ -1,10 +1,10 @@
 package athena.kanghyuk.com.infrastructure.config.security
 
+import athena.kanghyuk.com.infrastructure.adapter.jwt.JwtAdapter
 import athena.kanghyuk.com.infrastructure.config.filter.FilterChainConfig
 import athena.kanghyuk.com.infrastructure.error.handler.CustomAuthenticationEntryPoint
 import athena.kanghyuk.com.infrastructure.filter.ExceptionHandlerFilter
 import athena.kanghyuk.com.infrastructure.filter.JwtFilter
-import athena.kanghyuk.com.infrastructure.jwt.JwtAdapter
 import athena.kanghyuk.com.infrastructure.jwt.JwtResolver
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

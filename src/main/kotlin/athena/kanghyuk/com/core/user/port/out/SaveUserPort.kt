@@ -2,7 +2,8 @@ package athena.kanghyuk.com.core.user.port.out
 
 import athena.kanghyuk.com.application.user.entity.User
 
-interface ReadUserPort {
+interface SaveUserPort {
 
-    fun readByOAuthCode(oauthCode: String): User?
+    fun save(user: User): User
+
 }

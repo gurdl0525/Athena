@@ -6,5 +6,6 @@ import org.springframework.data.repository.Repository
 @org.springframework.stereotype.Repository
 interface UserRepository: Repository<User, Long> {
 
-    fun findByAccountId(accountID: String): User?
+    fun save(user: User): User
+    fun findByOauthCode(oauthCode: String): User?
 }

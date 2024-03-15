@@ -10,8 +10,8 @@ import javax.persistence.*
 class User(
     id: Long?,
     uuid: UUID?,
-    accountId: String,
-    password: String,
+    oauthCode: String,
+    nickname: String,
     roles: MutableList<Role>
 ) {
 
@@ -20,17 +20,16 @@ class User(
     var id: Long? = id
         protected set
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
-    var uuid: UUID? = uuid
+    var uuid: UUID = uuid ?: UUID.randomUUID()
         protected set
 
-    @Column(name = "account_id", nullable = false, unique = true)
-    var accountId: String = accountId
+    @Column(name = "oauth_code", nullable = false, unique = true, updatable = false, length = 60)
+    var oauthCode: String = oauthCode
         protected set
 
-    @Column(name = "password", nullable = false, length = 60)
-    var password: String = password
+    @Column(name = "nickname", nullable = false)
+    var nickname: String = nickname
         protected set
 
     @Convert(converter = RoleConverter::class)

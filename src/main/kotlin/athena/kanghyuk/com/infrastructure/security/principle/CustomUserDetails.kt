@@ -14,9 +14,9 @@ class CustomUserDetails(
             SimpleGrantedAuthority(it.name)
         }.toMutableList()
 
-    override fun getPassword(): String = user.password
+    override fun getPassword(): String? = null
 
-    override fun getUsername(): String = user.accountId
+    override fun getUsername(): String = user.nickname
 
     override fun isAccountNonExpired(): Boolean = true
 

@@ -15,7 +15,7 @@ interface GoogleInfoClient {
 
     @GetMapping
     fun googleInfo(
-        @RequestParam("alt") alt: String,
-        @RequestParam("access_token") accessToken: String
+        @RequestParam("access_token") accessToken: String,
+        @RequestParam("alt") alt: String = "json"
     ): GoogleInfoResponse
 }

@@ -20,7 +20,7 @@ class AuthController(
 
     @PostMapping("/signup/google")
     @ResponseStatus(HttpStatus.CREATED)
-    fun signup(
+    fun signupGoogle(
         @Valid @NotBlank(message = "비어있거나 null, 공백일 수 없습니다.")
         @RequestParam("token", required = false)
         token: String?
@@ -29,12 +29,38 @@ class AuthController(
     }
 
     @GetMapping("/login/google")
-    fun login(
+    fun loginGoogle(
         @Valid @NotBlank(message = "비어있거나 null, 공백일 수 없습니다.")
         @RequestParam("token", required = false)
         token: String?
     ): ResponseEntity<Any> {
         val (access, refresh) = loginUseCase.google(token!!)
+
+        val responseHeaders = HttpHeaders().apply {
+            add(HttpHeaders.SET_COOKIE, "RF-TOKEN=$refresh; Secure; HttpOnly; SameSite=lax")
+            setBearerAuth(access)
+        }
+
+        return ResponseEntity.ok().headers(responseHeaders).build()
+    }
+
+    @PostMapping("/signup/facebook")
+    @ResponseStatus(HttpStatus.CREATED)
+    fun signupFacebook(
+        @Valid @NotBlank(message = "비어있거나 null, 공백일 수 없습니다.")
+        @RequestParam("token", required = false)
+        token: String?
+    ) {
+        signUpUseCase.facebook(token!!)
+    }
+
+    @GetMapping("/login/facebook")
+    fun loginFacebook(
+        @Valid @NotBlank(message = "비어있거나 null, 공백일 수 없습니다.")
+        @RequestParam("token", required = false)
+        token: String?
+    ): ResponseEntity<Any> {
+        val (access, refresh) = loginUseCase.facebook(token!!)
 
         val responseHeaders = HttpHeaders().apply {
             add(HttpHeaders.SET_COOKIE, "RF-TOKEN=$refresh; Secure; HttpOnly; SameSite=lax")

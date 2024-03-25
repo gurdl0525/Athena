@@ -24,11 +24,11 @@ class User(
     var uuid: UUID = uuid ?: UUID.randomUUID()
         protected set
 
-    @Column(name = "oauth_code", nullable = false, unique = true, updatable = false, length = 60)
+    @Column(name = "oauth_code", nullable = false, unique = true, updatable = false, length = 21)
     var oauthCode: String = oauthCode
         protected set
 
-    @Column(name = "nickname", nullable = false)
+    @Column(name = "nickname", nullable = false, length = 72)
     var nickname: String = nickname
         protected set
 
